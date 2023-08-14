@@ -1,10 +1,11 @@
 <template>
-  <header>
+  <router-view></router-view>
+  <!-- <header>
     <nav>
       <button>random 🔄</button>
     </nav>
   </header>
-  
+
   <main>
     <div class="random-quote">
       <p>
@@ -20,7 +21,7 @@
     </div>
   </main>
 
-  <footer>created by username - devChallenges.io</footer>
+  <footer>created by username - devChallenges.io</footer> -->
 </template>
 
 <script>
