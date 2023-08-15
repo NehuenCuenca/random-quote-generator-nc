@@ -1,11 +1,11 @@
 /* https://www.figma.com/file/FFxqnf1cEDiHhvFpN6u4hV/quote?type=design&node-id=0-1&mode=design&t=BhtndfSb8Adfr5R8-0 */
 
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600&family=Raleway:wght@700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Raleway:wght@500;700&display=swap');
+
 /* 
   font-family: 'Montserrat', sans-serif;
   font-family: 'Raleway', sans-serif;
 */
-
 
 :root {
   --titleBlackStrong: #333333;
@@ -22,7 +22,7 @@ body {
 
 html {
   box-sizing: border-box;
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'Raleway', sans-serif;
 }
 
 *,
@@ -36,7 +36,10 @@ a {
   color: inherit;
 }
 
-button { cursor: pointer; }
+button { 
+  cursor: pointer;
+
+ }
 
 ul {
   padding: 0;
@@ -44,4 +47,26 @@ ul {
   list-style-type: none;
 }
 
-body { height: auto; }
+#app { 
+  height: auto;
+  display: grid;
+  grid-template-columns: 100%;
+  grid-template-rows: 10vh auto 10vh;
+  grid-template-areas: 
+  "header"
+  "page"
+  "footer";
+}
+
+main {
+  grid-area: page;
+  min-height: 80vh;
+  height: auto;
+}
+
+p.quote {
+  width: 90%;
+  font: 500 2.25rem 'Raleway', sans-serif;
+  border-left: 5px solid #F7DF94;
+  padding-left: 3vw;
+}

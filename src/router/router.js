@@ -9,7 +9,7 @@ const routes = [
     },
     {   
         name: 'AuthorQuotes',
-        path: '/author-quotes', 
+        path: '/author-quotes/:author', 
         component: () => import( /* webpackChunkName: "AuthorQuotes" */ '../pages/AuthorQuotes.vue') 
     },
 ]
