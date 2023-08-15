@@ -1,5 +1,6 @@
 <template>
-  <div class="loading" v-if="isLoading">Wait a momentum... 🗿</div>
+  <WaitingSign v-if="isLoading" />
+
   <div v-else class="quote-block">
     <p class="quote">"{{ randomQuote.quoteText }}"</p>
 
@@ -19,8 +20,11 @@
 <script>
 import { useRouter } from 'vue-router';
 import { onMounted, ref, computed } from 'vue';
+import WaitingSign from '../components/WaitingSign.vue';
 
 export default {
+  components: { WaitingSign },
+  
   setup() {
 
     const router = useRouter()
@@ -62,12 +66,6 @@ export default {
 </script>
 
 <style scoped>
-.loading {
-  align-self: center;
-  font: 600 2.5rem 'Raleway', sans-serif;
-  color: darkkhaki;
-}
-
 
 .quote-block .author-and-tags {
   padding: 4vh 1vw;

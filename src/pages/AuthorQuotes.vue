@@ -1,8 +1,10 @@
 <template>
     <div>
         <h1 class="name-author">{{ undashedAuthor }}</h1>
-        <div class="quotes-list">
+        <WaitingSign v-if="isLoading" />
+        <div v-else class="quotes-list">
             <p class="quote" v-for="({quoteText, _id}) in quotesList" :key="_id">"{{quoteText}}"</p>
+            <p class="no-quotes" v-if="quotesList.length === 0">Sorry, but this author doesn't have any quotes 🤷‍♂️</p>
         </div>
     </div>
 </template>
@@ -10,14 +12,17 @@
 <script>
 import { useRoute } from 'vue-router'
 import { onMounted, ref, computed } from 'vue'
-
+import WaitingSign from '../components/WaitingSign.vue';
 
 export default {
+    components: { WaitingSign },
+
     setup () {
         const { params } = useRoute()
 
         const { author } = params
         const quotesList = ref([])
+        const isLoading = ref(true);
         
         const getQuotesFromAuthor = async(author) => { 
             try {
@@ -25,6 +30,7 @@ export default {
                 if (resp.status === 200) {
                     const { data } = await resp.json()
                     
+                    isLoading.value = false;
                     quotesList.value = [ ...data ]
                 }
             } catch (error) {
@@ -45,7 +51,8 @@ export default {
         return {
             params,
             undashedAuthor,
-            quotesList
+            quotesList,
+            isLoading
         }
     }
 }
@@ -61,5 +68,10 @@ h1.name-author {
     display: flex;
     flex-direction: column;
     gap: 5vh 0;
+}
+
+p.no-quotes {
+    font: 500 1.25rem 'Raleway', sans-serif;
+    text-decoration: underline;
 }
 </style>
